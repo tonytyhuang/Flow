@@ -1,12 +1,19 @@
 const router = require("express").Router();
-import axios from "axios";
+const axios = require("axios");
 
-router.route("/get").get(async (req, res) => {
-  try {
-    return await axios.get(
-      `api.openweathermap.org/data/2.5/weather?q=6091104&appid=${process.env.OPEN_WEATHER_KEY}}`
-    );
-  } catch (err) {
-    return err;
-  }
+router.get("/get", (req, res) => {
+  console.log("hi");
+  // axios
+  //   .get(
+  //     `api.openweathermap.org/data/2.5/weather?q=6091104&appid=${process.env.OPEN_WEATHER_KEY}}`
+  //   )
+  //   .then((data) =>
+  //     res
+  //       .status(200)
+  //       .send(data)
+  //       .catch((err) => res.send(err))
+  //   );
+  return 41;
 });
+
+module.exports = router;

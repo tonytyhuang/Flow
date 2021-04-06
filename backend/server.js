@@ -27,3 +27,8 @@ const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
+
+// setup routes
+
+const apiRouter = require("./routes/api");
+app.use("/api", apiRouter);
