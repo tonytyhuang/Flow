@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import HomePage from "./apps/HomePage/app";
 import BibleStudy from "./apps/BibleStudy/app";
