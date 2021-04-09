@@ -7,7 +7,9 @@ router.get("/get", (req, res) => {
   axios
     .get(locUrl)
     .then((response) => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}}&units=metric&appid=${process.env.OPEN_WEATHER_KEY}`;
+      const lon = response.data.lon;
+      const lat = response.data.lat;
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,daily,alerts&units=metric&appid=${process.env.OPEN_WEATHER_KEY}`;
       axios
         .get(url)
         .then((response) => {
@@ -20,7 +22,7 @@ router.get("/get", (req, res) => {
         });
     })
     .catch((err) => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&appid=${process.env.OPEN_WEATHER_KEY}`;
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=43.783&lon=-79.4122&exclude=minutely,daily,alerts&units=metric&appid=${process.env.OPEN_WEATHER_KEY}`;
       axios
         .get(url)
         .then((response) => {
