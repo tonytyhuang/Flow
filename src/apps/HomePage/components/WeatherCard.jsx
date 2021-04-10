@@ -3,7 +3,7 @@
 const WeatherCard = ({props}) => {
     console.log(props);
     return (
-        <p> {props} </p>
+        <h1>Hi</h1>
     );
 }
 

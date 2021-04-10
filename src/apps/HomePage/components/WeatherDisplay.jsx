@@ -11,7 +11,7 @@ const WeatherDisplayContainer = () => {
 
     if (weather.result) {
         for (var i = 0; i < 12; ++i){
-            var hour = (date.getHours() + i) & 12;
+            var hour = (date.getHours() + i) % 12;
             timeWeather.push([weather.result.hourly[i], hour]);
             // console.log(weather.result);
             // timeWeather.push(<WeatherCard key = {i} props={[weather.result.hourly[i], hour]} />);
