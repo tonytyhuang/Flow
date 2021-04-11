@@ -1,18 +1,31 @@
 import { getWeather } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
-import WeatherCard from "./WeatherCard";
 import WeatherCardContainer from "./WeatherCardContainer";
 
 const WeatherDisplayContainer = () => {
     const weather = useAsync(getWeather, []);
     var date = new Date();
+    var currTime = date.getHours();
     var timeWeather = [];
 
     if (weather.result) {
         for (var i = 0; i < 12; ++i){
-            var hour = (date.getHours() + i) % 12;
-            timeWeather.push([weather.result.hourly[i], hour]);
+            var fullTime = (currTime + i) % 24;
+            var hour = (currTime + i) % 12;
+            let time;
+            if (fullTime > 11) {
+                if (hour === 0){
+                    hour = 12;
+                }
+                time = hour + 'pm';
+            }else {
+                if (hour === 0){
+                    hour = 12;
+                }
+                time = hour + 'am';
+            }
+            timeWeather.push([weather.result.hourly[i], time]);
             // console.log(weather.result);
             // timeWeather.push(<WeatherCard key = {i} props={[weather.result.hourly[i], hour]} />);
         }
