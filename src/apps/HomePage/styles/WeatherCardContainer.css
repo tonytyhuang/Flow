@@ -1,12 +1,19 @@
-.WeatherCardContainer {
+/* .WeatherCardContainer {
   background-color: #eeee33;
-  display: inline;
+  display: flex;
+  flex-direction: row;
+} */
+
+.WeatherCardsList {
+  padding: 0;
+  margin-bottom: 0rem;
+  list-style-type: none;
 }
 
-.WeatherCardList li {
-  display: inline;
-}
+.WeatherCardsList,
+li {
+  zoom: 1;
+  display: inline-block;
 
-.WeatherCardList {
-  display: inline;
+  /* this fix is needed for IE7- */
 }
