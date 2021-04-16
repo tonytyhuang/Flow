@@ -2,6 +2,11 @@ import DateDisplay from "./DateDisplay";
 import WeatherDisplay from "./WeatherDisplay";
 import "../styles/FlowPage.css"
 
+
+const handleOnClick = () => {
+
+}
+
 const FlowPage = () => {
     return (
         <div className = "flowPage">

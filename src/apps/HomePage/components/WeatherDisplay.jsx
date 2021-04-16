@@ -1,7 +1,8 @@
 import { getWeather } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
-import WeatherCardContainer from "./WeatherCardContainer";
+import WeatherCard from "./WeatherCard";
+import "../styles/WeatherDisplay.css"
 
 const WeatherDisplayContainer = () => {
     const weather = useAsync(getWeather, []);
@@ -26,30 +27,19 @@ const WeatherDisplayContainer = () => {
                 time = hour + 'am';
             }
             timeWeather.push([weather.result.hourly[i], time]);
-            // console.log(weather.result);
-            // timeWeather.push(<WeatherCard key = {i} props={[weather.result.hourly[i], hour]} />);
         }
-        console.log(timeWeather);
     }
 
-    // render: function() {
-    //     var rows = [];
-    //     for (var i = 0; i < numrows; i++) {
-    //         rows.push(<ObjectRow key={i}/>);
-    //     } 
-    
-    //     return (<tbody>{rows}</tbody>);
-    // }
+    const weatherCards = timeWeather.map((weatherInfo, index) => 
+        <li className = "WeatherCardItem" key = {index} ><WeatherCard props = {weatherInfo} /></li>
+    ); 
 
     return (
         <div>
             
             {weather.result && (
-                <div>
-                    <h3>
-                        {weather.result.current.temp}
-                    </h3>
-                    <WeatherCardContainer props = {timeWeather} />
+                <div className = "WeatherCardContainer">
+                    <ul className = "WeatherCardsList">{weatherCards}</ul>
                 </div>
             )}
             {weather.loading && (
