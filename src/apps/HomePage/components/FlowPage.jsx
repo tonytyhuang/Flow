@@ -1,9 +1,10 @@
 import DateDisplay from "./DateDisplay";
 import WeatherDisplay from "./WeatherDisplay";
+import "../styles/FlowPage.css"
 
 const FlowPage = () => {
     return (
-        <div>
+        <div className = "flowPage">
             <DateDisplay/>
             <WeatherDisplay/>
         </div>

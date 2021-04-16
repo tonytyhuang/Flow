@@ -6,7 +6,7 @@ const WeatherCardContainer = ({props}) => {
     const weatherList = props;
     console.log(weatherList);
     const weatherCards = weatherList.map((weatherInfo, index) => 
-        <li className = "WeatherCard" key = {index} ><WeatherCard props = {weatherInfo} /></li>
+        <li className = "WeatherCardItem" key = {index} ><WeatherCard props = {weatherInfo} /></li>
     );
     return (
         <div className = "WeatherCardContainer">
