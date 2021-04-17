@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { getWeather } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
@@ -9,7 +10,13 @@ const WeatherDisplayContainer = () => {
     var date = new Date();
     var currTime = date.getHours();
     var timeWeather = [];
+    const [timeSelected, setTimeSelected] = useState();
 
+    const handleTimeChoice = (time) => {
+        setTimeSelected(time);
+    }
+    
+    console.log(timeSelected);
     if (weather.result) {
         for (var i = 0; i < 12; ++i){
             var fullTime = (currTime + i) % 24;
@@ -31,7 +38,9 @@ const WeatherDisplayContainer = () => {
     }
 
     const weatherCards = timeWeather.map((weatherInfo, index) => 
-        <li className = "WeatherCardItem" key = {index} ><WeatherCard props = {weatherInfo} /></li>
+        <li className = "WeatherCardItem" key = {index}  >
+            <WeatherCard props = {weatherInfo} selected = {timeSelected} onClick = {()=> handleTimeChoice(weatherInfo[1])} />
+        </li>
     ); 
 
     return (

@@ -7,3 +7,13 @@
   align-items: center;
   margin: 1rem;
 }
+
+.WeatherCardselected {
+  width: 10rem;
+
+  border-radius: 25px;
+  border: 2px solid red;
+  padding: 20px;
+  align-items: center;
+  margin: 1rem;
+}
