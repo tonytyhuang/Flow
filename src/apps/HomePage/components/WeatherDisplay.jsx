@@ -10,15 +10,14 @@ const WeatherDisplayContainer = () => {
     var date = new Date();
     var currTime = date.getHours();
     var timeWeather = [];
-    const [timeSelected, setTimeSelected] = useState();
+    const [weatherSelected, setWeatherSelected] = useState();
 
-    const handleTimeChoice = (time) => {
-        setTimeSelected(time);
+    const handleWeatherChoice = (weatherChoice) => {
+        setWeatherSelected(weatherChoice);
     }
     
-    console.log(timeSelected);
     if (weather.result) {
-        for (var i = 0; i < 12; ++i){
+        for (var i = 0; i < 10; ++i){
             var fullTime = (currTime + i) % 24;
             var hour = (currTime + i) % 12;
             let time;
@@ -39,7 +38,7 @@ const WeatherDisplayContainer = () => {
 
     const weatherCards = timeWeather.map((weatherInfo, index) => 
         <li className = "WeatherCardItem" key = {index}  >
-            <WeatherCard props = {weatherInfo} selected = {timeSelected} onClick = {()=> handleTimeChoice(weatherInfo[1])} />
+            <WeatherCard props = {weatherInfo} selected = {weatherSelected} onClick = {()=> handleWeatherChoice(weatherInfo)} />
         </li>
     ); 
 
@@ -55,6 +54,10 @@ const WeatherDisplayContainer = () => {
                 <Spinner animation="border" role="status">
                                     <span className="sr-only">Loading...</span>
                 </Spinner>)}
+            {weatherSelected && (
+                <h1>Suggested activities</h1>
+                
+            )}
         </div>
     )
 }
