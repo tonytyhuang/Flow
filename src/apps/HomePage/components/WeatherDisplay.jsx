@@ -4,6 +4,7 @@ import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
 import WeatherCard from "./WeatherCard";
 import "../styles/WeatherDisplay.css"
+import Exercise from './Exercises';
 
 const WeatherDisplayContainer = () => {
     const weather = useAsync(getWeather, []);
@@ -55,8 +56,10 @@ const WeatherDisplayContainer = () => {
                                     <span className="sr-only">Loading...</span>
                 </Spinner>)}
             {weatherSelected && (
-                <h1>Suggested activities</h1>
-                
+                <div className = "ExerciseContainer">
+                    <h1>Suggested activities</h1>
+                    <Exercise weatherInfo = {weatherSelected}/>
+                </div>
             )}
         </div>
     )

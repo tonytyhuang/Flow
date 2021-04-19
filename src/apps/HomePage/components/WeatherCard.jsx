@@ -1,5 +1,5 @@
 import "../styles/WeatherCard.css";
-import { render, renderIcon } from './Icon';
+import { renderIcon } from './Icon';
 
 const WeatherCard = ({props, selected, onClick}) => {
     const hour = props[1];

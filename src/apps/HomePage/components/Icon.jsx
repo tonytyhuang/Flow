@@ -1,4 +1,3 @@
-
 import clearDay from "../../../images/01d.png";
 import clearNight from "../../../images/01n.png";
 import fewCloudsDay from "../../../images/02d.png";
@@ -48,6 +47,13 @@ export const renderIcon = (iconNumber) => {
         case "50d":
             return <img className='icon' src={mist} alt={mist} />;
         case "50n":
+            return <img className='icon' src={mist} alt={mist} />;
+    }
+}
+
+export const renderExerciseIcon = (exercise) => {
+    switch(exercise) {
+        case 'Run':
             return <img className='icon' src={mist} alt={mist} />;
     }
 }
