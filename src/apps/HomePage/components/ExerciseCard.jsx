@@ -1,8 +1,9 @@
 import { renderIcon } from './Icon';
+import "../styles/ExerciseCard.css";
 
 const ExerciseCard = ({exerciseChosen, selected, onClick}) => {
     const icon = renderIcon(exerciseChosen);
-    var select = selected ? selected[1] : "";
+    var select = selected ? selected : "";
     var isSelected = (select === exerciseChosen) ? "selected" : "";
 
     const className = "ExerciseCard" + isSelected;

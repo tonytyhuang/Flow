@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { getWeather } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
-import WeatherCard from "./WeatherCard";
-import "../styles/WeatherDisplay.css"
-import Exercise from './Exercises';
+import ExerciseContainer from './ExerciseContainer';
+import WeatherContainer from './WeatherContainer';
 
 const WeatherDisplayContainer = () => {
     const weather = useAsync(getWeather, []);
@@ -12,9 +11,15 @@ const WeatherDisplayContainer = () => {
     var currTime = date.getHours();
     var timeWeather = [];
     const [weatherSelected, setWeatherSelected] = useState();
+    const [exerciseSelected, setExerciseSelected] = useState();
 
     const handleWeatherChoice = (weatherChoice) => {
         setWeatherSelected(weatherChoice);
+        setExerciseSelected(null);
+    }
+
+    const handleExerciseChoice = (exerciseChoice) => {
+        setExerciseSelected(exerciseChoice);
     }
     
     if (weather.result) {
@@ -37,18 +42,12 @@ const WeatherDisplayContainer = () => {
         }
     }
 
-    const weatherCards = timeWeather.map((weatherInfo, index) => 
-        <li className = "WeatherCardItem" key = {index}  >
-            <WeatherCard props = {weatherInfo} selected = {weatherSelected} onClick = {()=> handleWeatherChoice(weatherInfo)} />
-        </li>
-    ); 
-
     return (
         <div>
             
             {weather.result && (
                 <div className = "WeatherCardContainer">
-                    <ul className = "WeatherCardsList">{weatherCards}</ul>
+                    <WeatherContainer timeWeather = {timeWeather} weatherSelected = {weatherSelected} onClick = {handleWeatherChoice}/>
                 </div>
             )}
             {weather.loading && (
@@ -58,8 +57,13 @@ const WeatherDisplayContainer = () => {
             {weatherSelected && (
                 <div className = "ExerciseContainer">
                     <h1>Suggested activities</h1>
-                    <Exercise weatherInfo = {weatherSelected}/>
+                    <ExerciseContainer weatherInfo = {weatherSelected} exerciseSelected = {exerciseSelected} onClick = {handleExerciseChoice} />
                 </div>
+            )}
+            {exerciseSelected && (
+                <button>
+                    Save
+                </button>
             )}
         </div>
     )
