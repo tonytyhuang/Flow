@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getWeather } from "../repository";
+import { getWeather, postExercise } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
 import ExerciseContainer from './ExerciseContainer';
@@ -20,8 +20,21 @@ const WeatherDisplayContainer = () => {
 
     const handleExerciseChoice = (exerciseChoice) => {
         setExerciseSelected(exerciseChoice);
+        console.log(exerciseChoice);
+        console.log(new Date(date.getFullYear(), date.getMonth(), date.getDay()));
     }
+
     
+    const handleSaveExercise = (exerciseChoice) => {
+        const completed = false;
+        const exerciseDate = new Date(date.getFullYear(), date.getMonth(), date.getDay());
+        var exerciseValue = {
+            exercise: exerciseChoice,
+            completed: completed,
+            date: exerciseDate,
+        }
+        postExercise(exerciseValue);
+    }
     if (weather.result) {
         for (var i = 0; i < 10; ++i){
             var fullTime = (currTime + i) % 24;
@@ -61,9 +74,9 @@ const WeatherDisplayContainer = () => {
                 </div>
             )}
             {exerciseSelected && (
-                <button>
+                <div onClick = {() => handleSaveExercise(exerciseSelected)}>
                     Save
-                </button>
+                </div>
             )}
         </div>
     )

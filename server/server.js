@@ -32,3 +32,6 @@ connection.once("open", () => {
 
 const apiRouter = require("./routes/api");
 app.use("/api", apiRouter);
+
+const exerciseRouter = require("./routes/exercise");
+app.use("/exercise", exerciseRouter);

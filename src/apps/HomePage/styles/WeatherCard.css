@@ -24,17 +24,17 @@
 
 .Temperature {
   position: absolute;
-  font-size: 35px;
-  margin-top: 3.5rem;
+  font-size: 45px;
+  margin-top: 4rem;
   font-weight: 470;
   color: white;
 }
 
 .Time {
   position: absolute;
-  font-size: 25px;
-  margin-top: 6rem;
-  margin-left: 0.25rem;
+  font-size: 20px;
+  margin-top: 7.2rem;
+  margin-left: 0.1rem;
   font-weight: 450;
   color: white;
 }
@@ -42,8 +42,8 @@
 .Weather {
   position: absolute;
   font-size: 15px;
-  margin-top: 8rem;
-  margin-left: 0.5rem;
+  margin-top: rem;
+  margin-left: 0.1rem;
   font-weight: 450;
   color: white;
 }
