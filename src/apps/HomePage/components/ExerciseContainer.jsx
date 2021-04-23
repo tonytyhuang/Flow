@@ -7,6 +7,7 @@ const ExerciseContainer = ({weatherInfo, exerciseSelected, onClick}) => {
     const outdoor = ['Run', 'Sports', 'Gym', 'Home Workout', 'Break'];
     const indoor = ['Home Workout', 'Gym', 'Break'];
 
+    // Load certain exercise based on weather conditions    
     const exercise = () => {
         if (temperature >= 6.5 && weather >= 800){
             return outdoor.map((exercise, index) => 
