@@ -13,28 +13,38 @@ const WeatherDisplayContainer = () => {
     const [weatherSelected, setWeatherSelected] = useState();
     const [exerciseSelected, setExerciseSelected] = useState();
 
+    // Set choice of weather clicked
     const handleWeatherChoice = (weatherChoice) => {
         setWeatherSelected(weatherChoice);
+        console.log(weatherSelected);
         setExerciseSelected(null);
     }
 
+    // Set choice of exercise clicked
     const handleExerciseChoice = (exerciseChoice) => {
         setExerciseSelected(exerciseChoice);
-        console.log(exerciseChoice);
-        console.log(new Date(date.getFullYear(), date.getMonth(), date.getDay()));
     }
-
     
+    // Handle saving exercise chosen
     const handleSaveExercise = (exerciseChoice) => {
         const completed = false;
-        const exerciseDate = new Date(date.getFullYear(), date.getMonth(), date.getDay());
+        var exerciseDay = 0;
+        if (date.getHours() > 14 && parseInt(weatherSelected[1].slice(0)) < 10){
+            exerciseDay = date.getDate() + 1;
+        }else {
+            exerciseDay = date.getDate();
+        }
+        const exerciseDate = new Date(date.getFullYear(), date.getMonth(), exerciseDay);
         var exerciseValue = {
             exercise: exerciseChoice,
             completed: completed,
             date: exerciseDate,
         }
-        postExercise(exerciseValue);
+        const resp = postExercise(exerciseValue);
+        console.log(resp);
     }
+
+    // When weather response is given, add response of each hour and that hour in array, timeWeather
     if (weather.result) {
         for (var i = 0; i < 10; ++i){
             var fullTime = (currTime + i) % 24;
@@ -57,7 +67,6 @@ const WeatherDisplayContainer = () => {
 
     return (
         <div>
-            
             {weather.result && (
                 <div className = "WeatherCardContainer">
                     <WeatherContainer timeWeather = {timeWeather} weatherSelected = {weatherSelected} onClick = {handleWeatherChoice}/>

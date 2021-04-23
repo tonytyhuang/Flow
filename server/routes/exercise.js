@@ -1,14 +1,15 @@
 const router = require("express").Router();
-let sevenArrows = require("../models/exercise.model");
+let Exercise = require("../models/exercise.model");
 
 router.route("/add").post((req, res) => {
-  const exerciseTitle = req.body.exercise;
-  const completed = req.body.completed;
+  console.log(req.body);
+  const title = req.body.exercise;
+  const complete = req.body.completed;
   const date = req.body.date;
 
-  const newExercise = new exercise({
-    exerciseTitle,
-    completed,
+  const newExercise = new Exercise({
+    title,
+    complete,
     date,
   });
 
