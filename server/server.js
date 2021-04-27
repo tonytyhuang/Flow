@@ -30,7 +30,7 @@ connection.once("open", () => {
 
 // setup routes
 
-const apiRouter = require("./routes/api");
+const apiRouter = require("./routes/weather");
 app.use("/api", apiRouter);
 
 const exerciseRouter = require("./routes/exercise");
