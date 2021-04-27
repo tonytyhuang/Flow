@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import { getWeather, postExercise } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
@@ -7,7 +7,7 @@ import WeatherContainer from './WeatherContainer';
 import { Link } from "react-router-dom";
 
 
-const WeatherDisplayContainer = () => {
+const WeatherDisplayContainer:FC = () => {
     const weather = useAsync(getWeather, []);
     var date = new Date();
     var currTime = date.getHours();

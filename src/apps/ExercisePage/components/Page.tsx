@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import DateDisplay from "./DateDisplay";
 import WeatherDisplay from "./WeatherDisplay";
 import "../styles/Page.css"
 
-const FlowPage = () => {
+const Page:FC = () => {
     return (
         <div className = "flowPage">
             <DateDisplay/>
@@ -11,4 +12,4 @@ const FlowPage = () => {
     )
 }
 
-export default FlowPage;
+export default Page;
