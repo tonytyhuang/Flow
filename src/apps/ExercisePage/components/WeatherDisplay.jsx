@@ -4,6 +4,8 @@ import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
 import ExerciseContainer from './ExerciseContainer';
 import WeatherContainer from './WeatherContainer';
+import { Link } from "react-router-dom";
+
 
 const WeatherDisplayContainer = () => {
     const weather = useAsync(getWeather, []);
@@ -83,9 +85,9 @@ const WeatherDisplayContainer = () => {
                 </div>
             )}
             {exerciseSelected && (
-                <div onClick = {() => handleSaveExercise(exerciseSelected)}>
+                <Link onClick = {() => handleSaveExercise(exerciseSelected)} to = "/biblestudy">
                     Save
-                </div>
+                </Link>
             )}
         </div>
     )

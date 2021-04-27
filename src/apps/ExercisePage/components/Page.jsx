@@ -1,6 +1,6 @@
 import DateDisplay from "./DateDisplay";
 import WeatherDisplay from "./WeatherDisplay";
-import "../styles/FlowPage.css"
+import "../styles/Page.css"
 
 const FlowPage = () => {
     return (
