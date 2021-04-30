@@ -1,13 +1,21 @@
+import { FC, useState, useCallback } from 'react';
+import FormatList from './FormatList';
 
+const Page:FC = () => {
+    const [format, setFormat] = useState<string|null>(null);
+    
 
-const LandingPage = () => {
+    console.log(format);
+    const handleFormat = useCallback((format:string) => {
+        setFormat(format);
+    },[setFormat]);
+
     return (
-        <div>
-            <h1>
-                Hello
-            </h1>
+        <div className = "Page">
+            <h1>Select Bible Study Format</h1>
+            <FormatList onClick = {handleFormat}/>
         </div>
     )
 }
 
-export default LandingPage;
+export default Page;

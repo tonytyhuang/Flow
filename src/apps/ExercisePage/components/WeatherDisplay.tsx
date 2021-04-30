@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import { useState, useCallback, FC } from 'react';
 import { getWeather, postExercise } from "../repository";
 import { useAsync } from 'react-async-hook';
 import Spinner from 'react-bootstrap/Spinner';
@@ -16,16 +16,15 @@ const WeatherDisplayContainer:FC = () => {
     const [exerciseSelected, setExerciseSelected] = useState<string | null>(null);
 
     // Set choice of weather clicked
-    const handleWeatherChoice = (weatherChoice: Array<any>) => {
+    const handleWeatherChoice = useCallback((weatherChoice: Array<any>) => {
         setWeatherSelected(weatherChoice);
-        console.log(weatherSelected);
         setExerciseSelected(null);
-    }
+    }, [setWeatherSelected]);
 
     // Set choice of exercise clicked
-    const handleExerciseChoice = (exerciseChoice: string) => {
+    const handleExerciseChoice = useCallback((exerciseChoice: string) => {
         setExerciseSelected(exerciseChoice);
-    }
+    }, [setExerciseSelected] );
     
     // Handle saving exercise chosen
     const handleSaveExercise = (exerciseChoice: string) => {

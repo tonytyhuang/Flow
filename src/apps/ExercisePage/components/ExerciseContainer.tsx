@@ -8,7 +8,6 @@ interface Props {
 }
 
 const ExerciseContainer:FC<Props> = ({weatherInfo, exerciseSelected, onClick}) => {
-    console.log(weatherInfo);
     const temperature = weatherInfo[0].temp;
     const weather = weatherInfo[0].weather[0].id;
     const outdoor = ['Run', 'Sports', 'Gym', 'Home Workout', 'Break'];
