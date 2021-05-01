@@ -13,7 +13,12 @@ const Page:FC = () => {
     return (
         <div className = "Page">
             <h1>Select Bible Study Format</h1>
-            <FormatList onClick = {handleFormat}/>
+            <FormatList onClick = {handleFormat} selected = {format}/>
+            {format && format == '7arrows' && (
+                <h1>
+                    7Arrows
+                </h1>
+            )}
         </div>
     )
 }
