@@ -1,5 +1,6 @@
 import { FC, useState, useCallback } from 'react';
 import FormatList from './FormatList';
+import SevenArrows from './SevenArrows';
 
 const Page:FC = () => {
     const [format, setFormat] = useState<string|null>(null);
@@ -15,9 +16,7 @@ const Page:FC = () => {
             <h1>Select Bible Study Format</h1>
             <FormatList onClick = {handleFormat} selected = {format}/>
             {format && format == '7arrows' && (
-                <h1>
-                    7Arrows
-                </h1>
+                <SevenArrows/>
             )}
         </div>
     )
