@@ -1,0 +1,19 @@
+.FormatListCard {
+  width: 10rem;
+
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  align-items: center;
+  margin: 1rem;
+}
+
+.FormatListCardselected {
+  width: 10rem;
+
+  border-radius: 25px;
+  border: 2px solid red;
+  padding: 20px;
+  align-items: center;
+  margin: 1rem;
+}

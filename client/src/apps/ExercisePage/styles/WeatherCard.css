@@ -1,0 +1,49 @@
+.WeatherCard {
+  width: 11.5rem;
+  height: 11.5rem;
+
+  border-radius: 15px;
+
+  padding: 20px;
+  align-items: center;
+  margin: 1rem;
+  background-size: cover;
+}
+
+.WeatherCardselected {
+  width: 11.5rem;
+  height: 11.5rem;
+
+  border-radius: 15px;
+  border: 1px solid red;
+  padding: 20px;
+  align-items: center;
+  margin: 1rem;
+  background-size: cover;
+}
+
+.Temperature {
+  position: absolute;
+  font-size: 45px;
+  margin-top: 4rem;
+  font-weight: 470;
+  color: white;
+}
+
+.Time {
+  position: absolute;
+  font-size: 20px;
+  margin-top: 7.2rem;
+  margin-left: 0.1rem;
+  font-weight: 450;
+  color: white;
+}
+
+.Weather {
+  position: absolute;
+  font-size: 15px;
+  margin-top: rem;
+  margin-left: 0.1rem;
+  font-weight: 450;
+  color: white;
+}

@@ -1,0 +1,13 @@
+.FormatList {
+  padding: 0;
+  margin-bottom: 0rem;
+  list-style-type: none;
+}
+
+.FormatList,
+li {
+  zoom: 1;
+  display: inline-block;
+
+  /* this fix is needed for IE7- */
+}
