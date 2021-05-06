@@ -5,6 +5,13 @@ import TextEditor from './TextEditor'
 interface Props {
 }
 
+function reducer(state, action) {
+    switch(action.type){
+        case 'title':
+            return {title: }
+    }
+}
+
 const SevenArrows:FC<Props> = () => {
     const [body, setBody] = useState<string | undefined>();
     const [state, dispatch] = useReducer(reducer, initialState);
