@@ -1,10 +1,7 @@
-.TextContainer .ql-editor {
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+.TextContainer {
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
 }
 
-.TextContainer .ql-toolbar {
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-}
-.TextContainer .ql-container {
-  border: none;
+.ql-editor {
+  min-height: 100px;
 }

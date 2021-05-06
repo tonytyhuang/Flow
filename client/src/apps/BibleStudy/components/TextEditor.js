@@ -1,17 +1,11 @@
-import { useCallback } from "react";
-import Quill from "quill";
-import "quill/dist/quill.snow.css";
+import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "../styles/TextEditor.css";
 
 export default function TextEditor() {
-  const ref = useCallback((wrap) => {
-    if (wrap == null) {
-      return;
-    }
-    wrap.innerHTML = "";
-    const editor = document.createElement("div");
-    wrap.append(editor);
-    var toolbarOptions = [
+  TextEditor.toolbarOptions = {
+    toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       [{ font: [] }],
       ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -24,18 +18,16 @@ export default function TextEditor() {
       [{ align: [] }],
 
       ["clean"], // remove formatting button
-    ];
-    new Quill(editor, {
-      modules: {
-        toolbar: toolbarOptions,
-      },
-      theme: "snow",
-    });
+    ],
+  };
 
-    return () => {
-      ref.innerHTML = "";
-    };
-  }, []);
-
-  return <div className="TextContainer" ref={ref}></div>;
+  return (
+    <div className="TextContainer">
+      <ReactQuill
+        theme="snow"
+        placeholder="hello"
+        modules={TextEditor.toolbarOptions}
+      ></ReactQuill>
+    </div>
+  );
 }
