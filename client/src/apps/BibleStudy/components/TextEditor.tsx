@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FC, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -5,10 +6,10 @@ import "../styles/TextEditor.css";
 
 interface Props {
   onChange: (key: number, text: string | undefined) => void;
-  key: number;
+  index: number;
 }
 
-const TextEditor:FC<Props> = ({key, onChange}) => {
+const TextEditor:FC<Props> = ({index, onChange}) => {
   const [body, setBody] = useState<string | undefined>();
   var toolbarOptions = {
     toolbar: [
@@ -25,9 +26,11 @@ const TextEditor:FC<Props> = ({key, onChange}) => {
       ["clean"], // remove formatting button
     ],
   };
-
-  onChange(key, body);
-
+  useEffect(() => {
+    if (body){
+      onChange(index, body);
+    }
+  }, [body])
   return (
     <div className="TextContainer">
       <ReactQuill
@@ -35,7 +38,7 @@ const TextEditor:FC<Props> = ({key, onChange}) => {
         placeholder="hello"
         modules={toolbarOptions}
         onChange={setBody}
-        value = {body}
+        value = {body || ""}
       ></ReactQuill>
     </div>
   );
