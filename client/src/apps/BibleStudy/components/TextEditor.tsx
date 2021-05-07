@@ -4,11 +4,12 @@ import "react-quill/dist/quill.snow.css";
 import "../styles/TextEditor.css";
 
 interface Props {
-  onChange: (text:string|undefined) => void;
-  value: string | undefined;
+  onChange: (key: number, text: string | undefined) => void;
+  key: number;
 }
 
-const TextEditor:FC<Props> = ({value, onChange}) => {
+const TextEditor:FC<Props> = ({key, onChange}) => {
+  const [body, setBody] = useState<string | undefined>();
   var toolbarOptions = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -25,14 +26,16 @@ const TextEditor:FC<Props> = ({value, onChange}) => {
     ],
   };
 
+  onChange(key, body);
+
   return (
     <div className="TextContainer">
       <ReactQuill
         theme="snow"
         placeholder="hello"
         modules={toolbarOptions}
-        onChange={onChange}
-        value = {value}
+        onChange={setBody}
+        value = {body}
       ></ReactQuill>
     </div>
   );
