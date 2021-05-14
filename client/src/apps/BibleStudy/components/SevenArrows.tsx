@@ -8,6 +8,15 @@ interface Props {
 const SevenArrows:FC<Props> = () => {
     const sections = [1,2,3,4,5,6,7];
     const sectionTextArray:string[] = ['','','','','','',''];
+    const headings:string[] = [
+        'What does it say?',
+        "What does it say to it's original audience?",
+        'What does it say about God?',
+        'What does it say about man?',
+        'What does it demand of me?',
+        'How does it change the way I relate to people?',
+        'How does it prompt me to pray?'
+    ];
 
     const handleChange = (index:number, text:string | undefined) => {
         switch (index){

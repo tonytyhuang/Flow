@@ -15,7 +15,7 @@ const Page:FC = () => {
         <div className = "Page">
             <h1>Select Bible Study Format</h1>
             <FormatList onClick = {handleFormat} selected = {format}/>
-            {format && format == '7arrows' && (
+            {format && format === '7arrows' && (
                 <SevenArrows/>
             )}
         </div>
