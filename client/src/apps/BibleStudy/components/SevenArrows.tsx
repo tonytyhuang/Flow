@@ -1,4 +1,4 @@
-import { FC, useReducer, useState } from "react";
+import { FC, useState } from "react";
 import '../styles/FormatListCard.css'
 import Header from "./Header";
 import TextEditor from './TextEditor'
@@ -9,6 +9,7 @@ interface Props {
 
 const SevenArrows:FC<Props> = () => {
     const sections = [1,2,3,4,5,6,7];
+    const [passage, setPassage] = useState<string|undefined>('');
     const sectionTextArray:string[] = ['','','','','','',''];
     const headings:string[] = [
         'What does it say?',
@@ -19,6 +20,10 @@ const SevenArrows:FC<Props> = () => {
         'How does it change the way I relate to people?',
         'How does it prompt me to pray?'
     ];
+
+    const handlePassage = (text:string | undefined) => {
+        setPassage(text);
+    }
 
     const handleChange = (index:number, text:string | undefined) => {
         switch (index){
@@ -81,9 +86,16 @@ const SevenArrows:FC<Props> = () => {
         </li>
     )});
 
+    console.log(passage);
+
     return (
         <div>
-            7Arrows
+            <form autoComplete="off">
+            <label>
+            Passage&nbsp;&nbsp;
+            <input type="text" name="name" onChange = {(e) => handlePassage(e.target.value)}/>
+            </label>
+            </form>
             <ul className = 'Form'>{section}</ul>
         </div>
 

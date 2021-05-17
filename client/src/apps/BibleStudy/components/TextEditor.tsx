@@ -35,7 +35,7 @@ const TextEditor:FC<Props> = ({index, onChange}) => {
     <div className="TextContainer">
       <ReactQuill
         theme="snow"
-        placeholder="hello"
+        placeholder="Write biblical juice here"
         modules={toolbarOptions}
         onChange={setBody}
         value = {body || ""}
