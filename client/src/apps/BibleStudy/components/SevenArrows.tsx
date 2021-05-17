@@ -3,6 +3,7 @@ import '../styles/FormatListCard.css'
 import Header from "./Header";
 import TextEditor from './TextEditor'
 import '../styles/Form.css'
+import { Link } from "react-router-dom";
 
 interface Props {
 }
@@ -79,6 +80,10 @@ const SevenArrows:FC<Props> = () => {
         }
     }
 
+    const handleSaveJournal = () => {
+
+    }
+
     const section = sections.map((index) => { return (
         <li key = {index}>
             <Header index = {index} title = {headings[index-1]}/>
@@ -97,6 +102,9 @@ const SevenArrows:FC<Props> = () => {
             </label>
             </form>
             <ul className = 'Form'>{section}</ul>
+            <Link onClick = {() => handleSaveJournal} to = "/biblestudy">
+                    Save
+            </Link>
         </div>
 
     );
