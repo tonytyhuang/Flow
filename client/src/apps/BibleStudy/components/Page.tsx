@@ -1,6 +1,7 @@
 import { FC, useState, useCallback } from 'react';
 import FormatList from './FormatList';
 import SevenArrows from './SevenArrows';
+import '../styles/Page.css'
 
 const Page:FC = () => {
     const [format, setFormat] = useState<string|null>(null);

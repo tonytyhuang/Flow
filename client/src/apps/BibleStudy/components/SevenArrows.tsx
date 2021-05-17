@@ -1,6 +1,8 @@
 import { FC, useReducer, useState } from "react";
 import '../styles/FormatListCard.css'
+import Header from "./Header";
 import TextEditor from './TextEditor'
+import '../styles/Form.css'
 
 interface Props {
 }
@@ -74,6 +76,7 @@ const SevenArrows:FC<Props> = () => {
 
     const section = sections.map((index) => { return (
         <li key = {index}>
+            <Header index = {index} title = {headings[index-1]}/>
             <TextEditor index = {index} onChange = {handleChange}></TextEditor>
         </li>
     )});
@@ -81,8 +84,7 @@ const SevenArrows:FC<Props> = () => {
     return (
         <div>
             7Arrows
-            <ul>{section}</ul>
-            {/* <TextEditor key = {1} onChange = {handleChange}></TextEditor> */}
+            <ul className = 'Form'>{section}</ul>
         </div>
 
     );
