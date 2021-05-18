@@ -91,8 +91,6 @@ const SevenArrows:FC<Props> = () => {
         </li>
     )});
 
-    console.log(passage);
-
     return (
         <div>
             <form autoComplete="off">
