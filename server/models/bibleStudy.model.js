@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const sevenArrowsSchema = new Schema(
+const bibleStudySchema = new Schema(
   {
     title: { type: String, required: true },
     entry: { type: String, required: true },
@@ -13,6 +13,6 @@ const sevenArrowsSchema = new Schema(
   }
 );
 
-const sevenArrows = mongoose.model("sevenArrows", sevenArrowsSchema);
+const bibleStudy = mongoose.model("bibleStudy", bibleStudySchema);
 
-module.exports = sevenArrows;
+module.exports = bibleStudy;
