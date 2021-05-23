@@ -24,3 +24,5 @@ router.route("/add").post((req, res) => {
     .then(() => res.json("Bible Journal Added!"))
     .catch((e) => res.status(400).json("Error: " + e));
 });
+
+module.exports = router;
