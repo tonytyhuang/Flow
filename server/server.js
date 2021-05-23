@@ -36,5 +36,5 @@ app.use("/api", apiRouter);
 const exerciseRouter = require("./routes/exercise");
 app.use("/exercise", exerciseRouter);
 
-const bibleStudyRouter = require("./routes/exercise");
-app.use("/exercise", exerciseRouter);
+const bibleStudyRouter = require("./routes/bibleStudy");
+app.use("/bibleEntry", bibleStudyRouter);

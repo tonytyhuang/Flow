@@ -2,7 +2,7 @@ const router = require("express").Router();
 let bibleStudy = require("../models/bibleStudy.model.js");
 
 router.route("/").get((req, res) => {
-  sevenArrows
+  bibleStudy
     .find()
     .then((page) => res.json(page))
     .catch((err) => res.status(400).json("Error: " + err));

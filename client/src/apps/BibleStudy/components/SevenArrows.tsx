@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import '../styles/FormatListCard.css'
 import Header from "./Header";
 import TextEditor from './TextEditor'
 import '../styles/Form.css'
 import { Link } from "react-router-dom";
+import { postBibleEntry } from "../repository";
 
 interface Props {
 }
@@ -27,6 +28,7 @@ const SevenArrows:FC<Props> = () => {
     }
 
     const handleChange = (index:number, text:string | undefined) => {
+        console.log(sectionTextArray)
         switch (index){
             case 1:
                 if (text === undefined){
@@ -80,8 +82,24 @@ const SevenArrows:FC<Props> = () => {
         }
     }
 
-    const handleSaveJournal = () => {
+    const formatEntry = () => {
+        var entry = '';
+        for (var i = 0; i < headings.length; i++ ){
+            entry += '<p><strong>' + headings[i] + '</strong>' + sectionTextArray[i] + '\n'
+        }
+        return entry;
+    }
 
+    const handleSaveJournal = () => {
+        const entry = formatEntry();
+        var bibleEntryValue = {
+            title: passage,
+            entry: entry,
+            date: new Date(),
+        }
+
+        const resp = postBibleEntry(bibleEntryValue);
+        console.log(resp);
     }
 
     const section = sections.map((index) => { return (
@@ -90,6 +108,10 @@ const SevenArrows:FC<Props> = () => {
             <TextEditor index = {index} onChange = {handleChange}></TextEditor>
         </li>
     )});
+
+    useEffect(() => {
+        console.log(sectionTextArray)
+    }, [sectionTextArray])
 
     return (
         <div>
