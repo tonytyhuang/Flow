@@ -85,7 +85,7 @@ const SevenArrows:FC<Props> = () => {
     const formatEntry = () => {
         var entry = '';
         for (var i = 0; i < headings.length; i++ ){
-            entry += '<p><strong>' + headings[i] + '</strong>' + sectionTextArray[i] + '\n'
+            entry += '<p><strong>' + headings[i] + '</strong></p>' + sectionTextArray[i]
         }
         return entry;
     }
@@ -122,7 +122,7 @@ const SevenArrows:FC<Props> = () => {
             </label>
             </form>
             <ul className = 'Form'>{section}</ul>
-            <Link onClick = {() => handleSaveJournal} to = "/biblestudy">
+            <Link onClick = {() => handleSaveJournal()} to = "/biblestudy">
                     Save
             </Link>
         </div>

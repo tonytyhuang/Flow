@@ -9,13 +9,14 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
+  console.log(req);
   const title = req.body.title;
-  const complete = req.body.entry;
+  const entry = req.body.entry;
   const date = req.body.date;
 
   const newEntry = new bibleStudy({
     title,
-    complete,
+    entry,
     date,
   });
 
