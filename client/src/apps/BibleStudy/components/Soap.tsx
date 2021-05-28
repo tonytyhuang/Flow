@@ -9,18 +9,15 @@ import { postBibleEntry } from "../repository";
 interface Props {
 }
 
-const SevenArrows:FC<Props> = () => {
-    const sections = [1,2,3,4,5,6,7];
+const Soap:FC<Props> = () => {
+    const sections = [1,2,3,4];
     const [passage, setPassage] = useState<string|undefined>('');
-    const sectionTextArray:string[] = ['','','','','','',''];
+    const sectionTextArray:string[] = ['','','',''];
     const headings:string[] = [
-        'What does it say?',
-        "What does it say to it's original audience?",
-        'What does it say about God?',
-        'What does it say about man?',
-        'What does it demand of me?',
-        'How does it change the way I relate to people?',
-        'How does it prompt me to pray?'
+        'Scripture: Write out one meaningful verse',
+        'Observation: What do you notice about the verse',
+        'Application: How can this scripture be applied in my life',
+        'Prayer: Write a prayer about applying this scripture to your life'
     ];
 
     const handlePassage = (text:string | undefined) => {
@@ -58,27 +55,6 @@ const SevenArrows:FC<Props> = () => {
                     sectionTextArray[3] = text;
                 }
                 break;
-            case 5:
-                if (text === undefined){
-                    sectionTextArray[4] = '';
-                }else {
-                    sectionTextArray[4] = text;
-                }
-                break;
-            case 6:
-                if (text === undefined){
-                    sectionTextArray[5] = '';
-                }else {
-                    sectionTextArray[5] = text;
-                }
-                break;
-            case 7:
-                if (text === undefined){
-                    sectionTextArray[6] = '';
-                }else {
-                    sectionTextArray[6] = text;
-                }
-                break;
         }
     }
 
@@ -97,21 +73,15 @@ const SevenArrows:FC<Props> = () => {
             entry: entry,
             date: new Date(),
         }
-
         const resp = postBibleEntry(bibleEntryValue);
-        console.log(resp);
     }
 
     const section = sections.map((index) => { return (
         <li key = {index}>
-            <Header index = {index} title = {headings[index-1]} sevenArrows = {true}/>
+            <Header index = {index} title = {headings[index-1]}/>
             <TextEditor index = {index} onChange = {handleChange}></TextEditor>
         </li>
     )});
-
-    useEffect(() => {
-        console.log(sectionTextArray)
-    }, [sectionTextArray])
 
     return (
         <div>
@@ -130,4 +100,4 @@ const SevenArrows:FC<Props> = () => {
     );
 }
 
-export default SevenArrows;
+export default Soap;

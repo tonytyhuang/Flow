@@ -5,14 +5,16 @@ import '../styles/Header.css'
 interface Props {
     index: number;
     title: string;
+    sevenArrows?: boolean;
 }
 
-const Header:FC<Props> = ({index, title}) => {
-
+const Header:FC<Props> = ({index, title, sevenArrows}) => {
     const icon = renderHeaderIcon(index);
     return(
         <div className = "Header">
-            <img className = 'Icon' src={icon} />
+            {sevenArrows && (
+                <img className = 'Icon' src={icon} />
+            )}
             {title}
         </div>
     )

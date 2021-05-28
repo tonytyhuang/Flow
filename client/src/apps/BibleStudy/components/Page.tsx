@@ -2,12 +2,11 @@ import { FC, useState, useCallback } from 'react';
 import FormatList from './FormatList';
 import SevenArrows from './SevenArrows';
 import '../styles/Page.css'
+import Soap from './Soap';
 
 const Page:FC = () => {
     const [format, setFormat] = useState<string|null>(null);
     
-
-    console.log(format);
     const handleFormat = useCallback((format:string) => {
         setFormat(format);
     },[setFormat]);
@@ -18,6 +17,9 @@ const Page:FC = () => {
             <FormatList onClick = {handleFormat} selected = {format}/>
             {format && format === '7arrows' && (
                 <SevenArrows/>
+            )}
+            {format && format === 'SOAP' && (
+                <Soap/>
             )}
         </div>
     )
