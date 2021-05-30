@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import BibleStudy from "./apps/BibleStudy/app";
 import ExercisePage from "./apps/ExercisePage/app";
+import HighlightPage from "./apps/HighlightPage/app";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <br />
         <Route path="/" exact component={ExercisePage} />
         <Route path="/biblestudy" component={BibleStudy} />
+        <Route path="/highlight" component={HighlightPage} />
       </div>
     </Router>
   );
