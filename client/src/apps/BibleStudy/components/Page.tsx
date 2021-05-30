@@ -3,6 +3,7 @@ import FormatList from './FormatList';
 import SevenArrows from './SevenArrows';
 import '../styles/Page.css'
 import Soap from './Soap';
+import Standard from './Standard';
 
 const Page:FC = () => {
     const [format, setFormat] = useState<string|null>(null);
@@ -20,6 +21,9 @@ const Page:FC = () => {
             )}
             {format && format === 'SOAP' && (
                 <Soap/>
+            )}
+            {format && format === 'Standard' && (
+                <Standard/>
             )}
         </div>
     )
