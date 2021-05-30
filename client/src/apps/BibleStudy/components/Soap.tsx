@@ -92,7 +92,7 @@ const Soap:FC<Props> = () => {
             </label>
             </form>
             <ul className = 'Form'>{section}</ul>
-            <Link onClick = {() => handleSaveJournal()} to = "/biblestudy">
+            <Link onClick = {() => handleSaveJournal()} to = "/highlight">
                     Save
             </Link>
         </div>
