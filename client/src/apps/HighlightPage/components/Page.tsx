@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import HighlightPage from '../app';
+import HighlightPage from './HighlightDisplay';
 // import "../styles/Page.css"
 
 const Page:FC = () => {
