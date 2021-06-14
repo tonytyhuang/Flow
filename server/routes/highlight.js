@@ -1,8 +1,8 @@
 const router = require("express").Router();
-let highlight = require("../models/highlight.model.js");
+let highlightModel = require("../models/highlight.model.js");
 
 router.route("/").get((req, res) => {
-  highlight
+  highlightModel
     .find({
       date: {
         $gte: new Date("2015-07-07T00:00:00.000Z"),
@@ -15,19 +15,17 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post((req, res) => {
   console.log(req);
-  const title = req.body.title;
-  const entry = req.body.entry;
+  const highlight = req.body.highlight;
   const date = req.body.date;
 
-  const newEntry = new bibleStudy({
-    title,
-    entry,
+  const newEntry = new highlightModel({
+    highlight,
     date,
   });
 
   newEntry
     .save()
-    .then(() => res.json("Bible Journal Added!"))
+    .then(() => res.json("Highlight Added!"))
     .catch((e) => res.status(400).json("Error: " + e));
 });
 

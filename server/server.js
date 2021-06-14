@@ -40,4 +40,4 @@ const bibleStudyRouter = require("./routes/bibleStudy");
 app.use("/bibleEntry", bibleStudyRouter);
 
 const highlightRouter = require("./routes/highlight");
-app.use("/higlight", highlightRouter);
+app.use("/highlight", highlightRouter);

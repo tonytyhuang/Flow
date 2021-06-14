@@ -1,5 +1,7 @@
 import { FC, useState } from 'react';
 import '../styles/HighlightDisplay.css'
+import { postHighlight } from "../repository";
+import HighlightPage from '../app';
 
 const HighlightDisplay:FC = () => {
     const [highlight, setHighlight] = useState<string|null>(null);
@@ -9,7 +11,12 @@ const HighlightDisplay:FC = () => {
     }
 
     const handleClick = () => {
-        console.log(highlight);
+        var entry = {
+            highlight: highlight,
+            date: new Date(),
+        }
+        const resp = postHighlight(entry);
+        console.log(resp);
     }
 
 
