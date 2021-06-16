@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import BibleStudy from "./apps/BibleStudy/app";
 import ExercisePage from "./apps/ExercisePage/app";
 import HighlightPage from "./apps/HighlightPage/app";
+import HomePage from "./apps/HomePage/app";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" exact component={ExercisePage} />
         <Route path="/biblestudy" component={BibleStudy} />
         <Route path="/highlight" component={HighlightPage} />
+        <Route path="/home" component={HomePage} />
       </div>
     </Router>
   );
