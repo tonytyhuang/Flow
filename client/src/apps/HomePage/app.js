@@ -1,7 +1,7 @@
-import FlowPage from "./components/Page";
+import Page from "./components/Page";
 
 const HomePage = () => {
-  return <FlowPage />;
+  return <Page />;
 };
 
 export default HomePage;

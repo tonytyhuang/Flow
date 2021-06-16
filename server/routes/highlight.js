@@ -1,12 +1,12 @@
 const router = require("express").Router();
 let highlightModel = require("../models/highlight.model.js");
 
-router.route("/").get((req, res) => {
+router.route("/get").get((req, res) => {
+  var date = new Date();
   highlightModel
     .find({
       date: {
-        $gte: new Date("2015-07-07T00:00:00.000Z"),
-        $lt: new Date("2015-07-08T00:00:00.000Z"),
+        $gte: new Date(date.getFullYear(), date.getMonth(), date.getDay()),
       },
     })
     .then((page) => res.json(page))
