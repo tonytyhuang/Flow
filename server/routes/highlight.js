@@ -3,10 +3,14 @@ let highlightModel = require("../models/highlight.model.js");
 
 router.route("/get").get((req, res) => {
   var date = new Date();
+  const endDate = new Date(
+    new Date().setUTCHours(23, 59, 59, 999)
+  ).toISOString();
   highlightModel
     .find({
       date: {
         $gte: new Date(date.getFullYear(), date.getMonth(), date.getDay()),
+        $lt: endDate,
       },
     })
     .then((page) => res.json(page))
