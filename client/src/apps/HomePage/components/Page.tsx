@@ -9,7 +9,8 @@ const Page:FC = () => {
 
     return (
         <div className = "flowPage">
-            <h1>What's your highlight for today?</h1>
+            <h1>Home Panel</h1>
+            <h2>Tasks Remaining</h2>
         </div>
     )
 }
