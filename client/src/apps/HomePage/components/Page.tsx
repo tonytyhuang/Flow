@@ -5,6 +5,9 @@ import { getHighlight } from "../repository";
 const Page:FC = () => {
     const highlight = getHighlight();
     console.log(highlight);
+    highlight
+        .then(value => {console.log(value)})
+        .catch(err => {console.log(err)});
 
 
     return (

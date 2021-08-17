@@ -10,7 +10,7 @@ interface Props {
 const ExerciseContainer:FC<Props> = ({weatherInfo, exerciseSelected, onClick}) => {
     const temperature = weatherInfo[0].temp;
     const weather = weatherInfo[0].weather[0].id;
-    const outdoor = ['Run', 'Sports', 'Gym', 'Home Workout', 'Break'];
+    const outdoor = ['Run', 'Sports', 'Gym', 'Calisthenics', 'Break'];
     const indoor = ['Home Workout', 'Gym', 'Break'];
 
     // Load certain exercise based on weather conditions    
