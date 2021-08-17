@@ -1,14 +1,21 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 // import "../styles/Page.css"
 import { getHighlight } from "../repository";
 
 const Page:FC = () => {
+    const [highlightSet, setHighlightSet ] = useState<boolean>(false);
+    const [highlightValue, setHighlightValue] = useState<Array<any> | null>(null);
     const highlight = getHighlight();
     console.log(highlight);
     highlight
-        .then(value => {console.log(value)})
+        .then(value => {setHighlightValue(value)})
         .catch(err => {console.log(err)});
 
+    if (highlightValue){
+        if (highlightValue.length > 0){
+            setHighlightSet(true);
+        }
+    };
 
     return (
         <div className = "flowPage">
