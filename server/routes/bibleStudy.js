@@ -26,4 +26,20 @@ router.route("/add").post((req, res) => {
     .catch((e) => res.status(400).json("Error: " + e));
 });
 
+router.route("/get").get((req, res) => {
+  var date = new Date();
+  const endDate = new Date(
+    new Date().setUTCHours(23, 59, 59, 999)
+  ).toISOString();
+  bibleStudy
+    .find({
+      date: {
+        $gte: new Date(date.getFullYear(), date.getMonth(), date.getDay()),
+        $lt: endDate,
+      },
+    })
+    .then((page) => res.json(page))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;
