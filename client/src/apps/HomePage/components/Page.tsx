@@ -15,6 +15,7 @@ const Page:FC = () => {
     useEffect(() => {
         highlight
         .then(value => {
+            console.log(value);
             if (!highlightSet){
                 if (value.length >= 0){
                     setHighlightSet(true);
@@ -24,6 +25,35 @@ const Page:FC = () => {
         })
         .catch(err => {console.log(err)});
     }, [highlight])
+
+    useEffect(() => {
+        bibleStudy
+        .then(value => {
+            console.log(value);
+            if (!bibleSet){
+                if (value.length >= 0){
+                    setBibleSet(true);
+                    setBibleValue(value);
+                }
+            }
+        })
+        .catch(err => {console.log(err)});
+    }, [bibleStudy])
+
+    useEffect(() => {
+        exercise
+        .then(value => {
+            console.log(value);
+            if (!exerciseSet){
+                if (value.length >= 0){
+                    setExerciseSet(true);
+                    setExerciseValue(value);
+                }
+            }
+        })
+        .catch(err => {console.log(err)});
+    }, [exercise])
+
 
     return (
         <div className = "flowPage">
