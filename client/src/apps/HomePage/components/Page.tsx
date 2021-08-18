@@ -6,16 +6,17 @@ const Page:FC = () => {
     const [highlightSet, setHighlightSet ] = useState<boolean>(false);
     const [highlightValue, setHighlightValue] = useState<Array<any> | null>(null);
     const highlight = getHighlight();
-    console.log(highlight);
+    // console.log(highlight);
     highlight
-        .then(value => {setHighlightValue(value)})
+        .then(value => {
+            if (value.length >= 0){
+                setHighlightSet(true);
+                // setHighlightValue(value);
+                // console.log(highlightValue);
+                //console.log(value);
+            }
+        })
         .catch(err => {console.log(err)});
-
-    if (highlightValue){
-        if (highlightValue.length > 0){
-            setHighlightSet(true);
-        }
-    };
 
     return (
         <div className = "flowPage">
