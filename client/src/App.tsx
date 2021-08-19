@@ -12,10 +12,10 @@ function App() {
     <Router>
       <div className="container">
         <br />
-        <Route path="/" exact component={ExercisePage} />
+        <Route path="/exercise" exact component={ExercisePage} />
         <Route path="/biblestudy" component={BibleStudy} />
         <Route path="/highlight" component={HighlightPage} />
-        <Route path="/home" component={HomePage} />
+        <Route path="/" component={HomePage} />
       </div>
     </Router>
   );
