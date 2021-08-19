@@ -1,13 +1,6 @@
 const router = require("express").Router();
 let bibleStudy = require("../models/bibleStudy.model.js");
 
-router.route("/").get((req, res) => {
-  bibleStudy
-    .find()
-    .then((page) => res.json(page))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
 router.route("/add").post((req, res) => {
   console.log(req);
   const title = req.body.title;
@@ -31,10 +24,11 @@ router.route("/get").get((req, res) => {
   const endDate = new Date(
     new Date().setUTCHours(23, 59, 59, 999)
   ).toISOString();
+  const startDate = new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString();
   bibleStudy
     .find({
       date: {
-        $gte: new Date(date.getFullYear(), date.getMonth(), date.getDay()),
+        $gte: startDate,
         $lt: endDate,
       },
     })
