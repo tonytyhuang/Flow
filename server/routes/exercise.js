@@ -25,7 +25,6 @@ router.route("/get").get((req, res) => {
     new Date().setUTCHours(23, 59, 59, 999)
   ).toISOString();
   const startDate = new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString();
-  console.log(startDate);
   Exercise.find({
     date: {
       $gte: startDate,
