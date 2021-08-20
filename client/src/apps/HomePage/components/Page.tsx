@@ -59,11 +59,12 @@ const Page:FC = () => {
     useEffect(() => {
         if (exerciseSet && bibleSet && highlightSet){
             if (exerciseValue && bibleValue && highlightValue){
-                if (exerciseValue.length == 0){
+                if (exerciseValue.length === 0){
+                    console.log("exercise");
                     history.push("/exercise");
-                }else if (bibleValue.length == 0){
+                }else if (bibleValue.length === 0){
                     history.push("/biblestudy");
-                }else if (highlightValue.length == 0){
+                }else if (highlightValue.length === 0){
                     history.push("/highlight");
                 }
             }
@@ -72,7 +73,7 @@ const Page:FC = () => {
 
     return (
         <div>
-            { !exerciseSet || !bibleSet || !highlightSet && (
+            { !(exerciseSet && bibleSet && highlightSet) && (
                 <Spinner animation="border" role="status">
                                         <span className="sr-only">Loading...</span>
                 </Spinner>)
