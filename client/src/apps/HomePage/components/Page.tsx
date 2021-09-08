@@ -9,13 +9,13 @@ const Page:FC = () => {
     const [highlightValue, setHighlightValue] = useState<Array<any> | null>(null);
     const [exerciseValue, setExerciseValue] = useState<Array<any> | null>(null);
     const [bibleValue, setBibleValue] = useState<Array<any> | null>(null);
+    const [loadPage, setLoadPage] = useState<boolean | null>(null);
     const highlight = getHighlight();
     const bibleStudy = getBibleStudy();
     const exercise = getExercise();
     useEffect(() => {
         highlight
         .then(value => {
-            console.log(value);
             if (highlightValue === null){
                 if (value.length >= 0){
                     setHighlightValue(value);
@@ -28,7 +28,6 @@ const Page:FC = () => {
     useEffect(() => {
         bibleStudy
         .then(value => {
-            console.log(value);
             if (bibleValue === null){
                 if (value.length >= 0){
                     setBibleValue(value);
@@ -59,6 +58,8 @@ const Page:FC = () => {
                 history.push("/biblestudy");
             }else if (highlightValue.length === 0){
                 history.push("/highlight");
+            }else {
+                setLoadPage(true);
             }
         }
     }, [exerciseValue, bibleValue, highlightValue])
@@ -70,7 +71,7 @@ const Page:FC = () => {
                     <span className="sr-only">Loading...</span>
                 </Spinner>)
             }
-            { exerciseValue && bibleValue && highlightValue && (
+            { exerciseValue && bibleValue && highlightValue && loadPage &&(
                 <div className = "flowPage">
                     <h1>Home Panel</h1>
                     <h2>Tasks Remaining</h2>
