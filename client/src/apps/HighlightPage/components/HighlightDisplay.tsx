@@ -2,8 +2,10 @@ import { FC, useState } from 'react';
 import '../styles/HighlightDisplay.css'
 import { postHighlight } from "../repository";
 import HighlightPage from '../app';
+import { useHistory } from 'react-router-dom';
 
 const HighlightDisplay:FC = () => {
+    const history = useHistory();
     const [highlight, setHighlight] = useState<string|null>(null);
 
     const handleChange = (e:any) => {
@@ -17,6 +19,7 @@ const HighlightDisplay:FC = () => {
         }
         const resp = postHighlight(entry);
         console.log(resp);
+        history.push("/");
     }
 
 

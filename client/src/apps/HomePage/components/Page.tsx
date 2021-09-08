@@ -75,6 +75,12 @@ const Page:FC = () => {
                 <div className = "flowPage">
                     <h1>Home Panel</h1>
                     <h2>Tasks Remaining</h2>
+                    {!exerciseValue[0].complete && (
+                        <div> Exercise </div>
+                    )}
+                    {!highlightValue[0].complete && (
+                        <div> Highlight </div>
+                    )}
                 </div>
             )}
         </div>
