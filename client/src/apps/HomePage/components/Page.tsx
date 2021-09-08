@@ -6,11 +6,8 @@ import { useHistory } from 'react-router-dom';
 
 const Page:FC = () => {
     const history = useHistory();
-    const [highlightSet, setHighlightSet ] = useState<boolean>(false);
     const [highlightValue, setHighlightValue] = useState<Array<any> | null>(null);
-    const [exerciseSet, setExerciseSet ] = useState<boolean>(false);
     const [exerciseValue, setExerciseValue] = useState<Array<any> | null>(null);
-    const [bibleSet, setBibleSet ] = useState<boolean>(false);
     const [bibleValue, setBibleValue] = useState<Array<any> | null>(null);
     const highlight = getHighlight();
     const bibleStudy = getBibleStudy();
@@ -19,9 +16,8 @@ const Page:FC = () => {
         highlight
         .then(value => {
             console.log(value);
-            if (!highlightSet){
+            if (highlightValue === null){
                 if (value.length >= 0){
-                    setHighlightSet(true);
                     setHighlightValue(value);
                 }
             }
@@ -33,9 +29,8 @@ const Page:FC = () => {
         bibleStudy
         .then(value => {
             console.log(value);
-            if (!bibleSet){
+            if (bibleValue === null){
                 if (value.length >= 0){
-                    setBibleSet(true);
                     setBibleValue(value);
                 }
             }
@@ -46,9 +41,8 @@ const Page:FC = () => {
     useEffect(() => {
         exercise
         .then(value => {
-            if (!exerciseSet){
+            if (exerciseValue === null){
                 if (value.length >= 0){
-                    setExerciseSet(true);
                     setExerciseValue(value);
                 }
             }
@@ -57,32 +51,29 @@ const Page:FC = () => {
     }, [exercise])
 
     useEffect(() => {
-        if (exerciseSet && bibleSet && highlightSet){
-            if (exerciseValue && bibleValue && highlightValue){
-                if (exerciseValue.length === 0){
-                    console.log("exercise");
-                    history.push("/exercise");
-                }else if (bibleValue.length === 0){
-                    history.push("/biblestudy");
-                }else if (highlightValue.length === 0){
-                    history.push("/highlight");
-                }
+        if (exerciseValue && bibleValue && highlightValue){
+            if (exerciseValue.length === 0){
+                console.log("exercise");
+                history.push("/exercise");
+            }else if (bibleValue.length === 0){
+                history.push("/biblestudy");
+            }else if (highlightValue.length === 0){
+                history.push("/highlight");
             }
         }
-    }, [exerciseSet, bibleSet, highlightSet])
+    }, [exerciseValue, bibleValue, highlightValue])
 
     return (
         <div>
-            { !(exerciseSet && bibleSet && highlightSet) && (
+            { !(exerciseValue && bibleValue && highlightValue) && (
                 <Spinner animation="border" role="status">
-                                        <span className="sr-only">Loading...</span>
+                    <span className="sr-only">Loading...</span>
                 </Spinner>)
             }
-            { exerciseSet && bibleSet && highlightSet && (
+            { exerciseValue && bibleValue && highlightValue && (
                 <div className = "flowPage">
                     <h1>Home Panel</h1>
                     <h2>Tasks Remaining</h2>
-                    
                 </div>
             )}
         </div>
