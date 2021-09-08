@@ -1,13 +1,15 @@
 import { FC } from "react";
 
 interface Props {
-    exercise: Array<any> | null;
-    onClick: () => void;
+    highlight: Array<any>;
+    onClick?: () => void;
 }
 
-const HighlightTask:FC<Props> = ({exercise, onClick}) => {
+const HighlightTask:FC<Props> = ({highlight, onClick}) => {
+    const title = highlight[0].highlight;
     return (
         <div>
+            <div className = "title">{title}</div>
         </div>
     );
 }

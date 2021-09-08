@@ -3,6 +3,8 @@ import { Spinner } from 'react-bootstrap';
 // import "../styles/Page.css"
 import { getHighlight, getBibleStudy, getExercise } from "../repository";
 import { useHistory } from 'react-router-dom';
+import ExerciseTask from './ExerciseTask';
+import HighlightTask from './HighlightTask';
 
 const Page:FC = () => {
     const history = useHistory();
@@ -76,10 +78,14 @@ const Page:FC = () => {
                     <h1>Home Panel</h1>
                     <h2>Tasks Remaining</h2>
                     {!exerciseValue[0].complete && (
-                        <div> Exercise </div>
+                        <div> Exercise 
+                            <ExerciseTask exercise = {exerciseValue} />
+                        </div>
                     )}
                     {!highlightValue[0].complete && (
-                        <div> Highlight </div>
+                        <div> Highlight 
+                            <HighlightTask highlight={highlightValue} />
+                       </div>
                     )}
                 </div>
             )}
